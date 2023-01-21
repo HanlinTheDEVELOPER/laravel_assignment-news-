@@ -1,0 +1,39 @@
+@extends('Page.home')
+@section('table')
+    <div class="rounded overflow-hidden">
+        <table class="table table-dark table-striped table-sm ">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Title</th>
+                    <th>Photo</th>
+                    <th>Body</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>No.</td>
+                    <td>Title</td>
+                    <td>Photo</td>
+                    <td>Body</td>
+                    <td>Actions</td>
+                </tr>
+                <tr>
+                    <td>No.</td>
+                    <td>Title</td>
+                    <td>Photo</td>
+                    <td>Body</td>
+                    <td>Actions</td>
+                </tr>
+                <tr>
+                    <td>No.</td>
+                    <td>Title</td>
+                    <td>Photo</td>
+                    <td>Body</td>
+                    <td>Actions</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+@endsection
