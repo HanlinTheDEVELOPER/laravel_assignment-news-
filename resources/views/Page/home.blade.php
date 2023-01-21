@@ -37,19 +37,33 @@
                             </div>
                             <div class=" w-3/5 flex flex-col justify-between">
                                 <input class="form-control rounded" name="title" placeholder="News Title" type="text">
-                                <select class="form-control rounded" name="tag">
+                                <select class="form-control rounded" id="news_tag_select_button" name="tag">
                                     <option disabled selected value="">--Please choose an option--</option>
-                                    <option value="dog">Dog</option>
-                                    <option value="cat">Cat</option>
+                                    <option value="normal">Normal News</option>
+                                    <option value="breaking">Breaking News</option>
                                 </select>
                                 <input class="form-control rounded" id="news_image_upload" name="photo" type="file">
                             </div>
                         </div>
-                        <hr class="mt-3">
+                        <hr class="my-3">
+                        <div class="flex justify-center gap-3" id="regions_list_parent">
+                            <textarea class="form-control" id="summernote" name="body"></textarea>
+                            <div class="border  w-2/5 p-2" id="regions_list_to_check" style="display: none">
+                                <div class="mb-3">Choose one or more effective Regions</div>
+                                <div class="grid grid-cols-3">
+                                    @foreach ($regions as $region)
+                                        <div>
+                                            <input name="{{ $region->id }}" type="checkbox">
+                                            <label for="{{ $region->id }}">{{ $region->name }}</label>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                            </div>
+                        </div>
                         <hr class="my-3">
                         <div class="text-end">
                             <button class="text-white bg-black/50 px-2 py-1 rounded">Upload</button>
-
                         </div>
                     </form>
 
@@ -61,11 +75,17 @@
 
 @endsection
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function(e) {
 
-
+        $('#summernote').summernote({
+            placeholder: 'Enter News Detail',
+            tabsize: 2,
+            height: 150
+        });
         $('#news_image_upload').change(function() {
+            console.log('ad')
 
             let reader = new FileReader();
 
@@ -77,8 +97,12 @@
             reader.readAsDataURL(this.files[0]);
 
         });
-
-
-
+        $('#news_tag_select_button').change(function(event) {
+            if (event.target.value === 'breaking') {
+                $("#regions_list_to_check").css("display", "block");
+            } else {
+                $("#regions_list_to_check").css("display", "none");
+            }
+        })
     });
 </script>

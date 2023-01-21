@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Region;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $regions = ['Kachin', 'Kayarr', 'Kayin', 'Chin', 'Mon', 'Rakhine', 'Shan', 'Yangon', 'Mandalay', 'Bago', 'Sagine', 'Magway', 'Ayarwaddy', 'Tanintharyi'];
+        foreach ($regions as $region) {
+            Region::create([
+                'name' => $region,
+            ]);
+        }
     }
 }
