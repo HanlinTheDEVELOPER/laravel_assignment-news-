@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,5 @@ Route::get('/', function () {
     return redirect('/news/all');
 });
 
-Route::get('/news/{tag}', [AdminController::class, 'getNews']);
-Route::post('/uploadNews', [AdminController::class, 'uploadNews']);
+Route::get('/news/{tag}', [NewsController::class, 'getNews']);
+Route::post('/uploadNews', [NewsController::class, 'uploadNews']);
