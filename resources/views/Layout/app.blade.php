@@ -182,7 +182,7 @@
 
             </div>
             <div style="height:50px"></div>
-            <div class="py-5 px-2">
+            <div class="py-5 min-h-screen px-2">
                 @yield('contents')
             </div>
 

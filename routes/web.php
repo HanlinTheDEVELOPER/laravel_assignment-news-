@@ -21,3 +21,6 @@ Route::get('/', function () {
 
 Route::get('/news/{tag}', [NewsController::class, 'getNews']);
 Route::post('/uploadNews', [NewsController::class, 'uploadNews']);
+Route::get('/editNews/{id}', [NewsController::class, 'editNews']);
+Route::post('/updateNews', [NewsController::class, 'updateNews']);
+Route::delete('/deleteNews', [NewsController::class, 'deleteNews']);

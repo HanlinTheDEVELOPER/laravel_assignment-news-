@@ -4,10 +4,17 @@
 @section('contents')
     <div class="w-full h-12 bg-gray-700 px-3 mb-3 flex justify-between items-center rounded">
         <nav class="flex">
-            <a class="px-2 py-1 rounded-l text-gray-700 bg-gray-200 cursor-pointer" href="{{ url('/news/all') }}">All</a>
-            <a class="px-2 py-1 border border-x-black border-x-4 text-gray-700 bg-gray-200 cursor-pointer"
+            <a class="px-2 py-1 rounded-l @if ($data == 'all') text-gray-200 bg-gray-700 border border-white
+            @else
+                text-gray-700 bg-gray-200 @endif cursor-pointer"
+                href="{{ url('/news/all') }}">All</a>
+            <a class="px-2 py-1 border border-x-black border-x-4 @if ($data == 'breaking') text-gray-200 bg-gray-700 border border-white
+            @else
+                text-gray-700 bg-gray-200 @endif cursor-pointer"
                 href="{{ url('/news/breaking') }}"> Breaking</a>
-            <a class="px-2 py-1 rounded-r  text-gray-700 bg-gray-200 cursor-pointer"
+            <a class="px-2 py-1 rounded-r  @if ($data == 'normal') text-gray-200 bg-gray-700 border border-white
+            @else
+                text-gray-700 bg-gray-200 @endif cursor-pointer"
                 href="{{ url('/news/normal') }}">Normal</a>
         </nav>
         <!-- Button trigger modal -->

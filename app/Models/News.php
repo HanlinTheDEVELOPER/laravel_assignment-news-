@@ -9,4 +9,9 @@ class News extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function regions()
+    {
+        return $this->belongsToMany(Region::class, 'news_regions');
+    }
 }
