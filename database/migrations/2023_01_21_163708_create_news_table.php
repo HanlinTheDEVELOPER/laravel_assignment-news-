@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('photo');
-            $table->string('tag');
+            $table->enum('tag', ['normal', 'breaking']);
             $table->longText('body');
             $table->timestamps();
         });

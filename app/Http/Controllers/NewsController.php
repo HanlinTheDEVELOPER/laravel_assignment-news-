@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function getNews($tag = 'all')
+    public function index($tag = 'all')
     {
         if ($tag == "breaking") {
             $news = News::where('tag', "breaking")->get();
@@ -25,7 +25,7 @@ class NewsController extends Controller
         $regions = Region::get();
         return view('Table.all')->with(['data' => $tag, 'regions' => $regions, 'news' => $news]);
     }
-    public function uploadNews(NewsRequest $request)
+    public function store(NewsRequest $request)
     {
         $news = $request->toArray();
         $photo_name = $request->file('photo')->getClientOriginalName();
@@ -51,7 +51,7 @@ class NewsController extends Controller
         return redirect('/news/all');
     }
 
-    public function editNews($id)
+    public function edit($id)
     {
         $item = News::with('regions')->find($id);
         $tag = 'all';
@@ -61,7 +61,7 @@ class NewsController extends Controller
         return view('Page.editNews')->with(['data' => $tag, 'item' => $item, 'regions' => $regions, 'relatedRegions' => $relatedRegionsId]);
     }
 
-    public function updateNews(NewsUpdateRequest $request)
+    public function update(NewsUpdateRequest $request)
     {
         $oldNews = News::find($request->id);
 
@@ -96,7 +96,7 @@ class NewsController extends Controller
         return redirect('/news/all');
     }
 
-    public function deleteNews(Request $request)
+    public function destroy(Request $request)
     {
         $news = News::find($request->id);
         if ($news->tag == "breaking") {

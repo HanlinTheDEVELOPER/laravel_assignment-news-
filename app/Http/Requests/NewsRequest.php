@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class NewsRequest extends FormRequest
 {
@@ -26,8 +28,17 @@ class NewsRequest extends FormRequest
         return [
             'title' => 'required',
             'photo' => 'required',
-            'tag' => 'required',
+            'tag' => 'in:normal,breaking',
             'body' => 'required'
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success'   => false,
+            'message'   =>  $validator->errors()
+
+        ], 400));
     }
 }

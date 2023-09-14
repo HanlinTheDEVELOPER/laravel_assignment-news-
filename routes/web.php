@@ -19,8 +19,8 @@ Route::get('/', function () {
     return redirect('/news/all');
 });
 
-Route::get('/news/{tag}', [NewsController::class, 'getNews']);
-Route::post('/uploadNews', [NewsController::class, 'uploadNews']);
-Route::get('/editNews/{id}', [NewsController::class, 'editNews']);
-Route::post('/updateNews', [NewsController::class, 'updateNews']);
-Route::delete('/deleteNews', [NewsController::class, 'deleteNews']);
+Route::get('/news/{tag}', [NewsController::class, 'index']);
+Route::post('/uploadNews', [NewsController::class, 'store']);
+Route::get('/editNews/{id}', [NewsController::class, 'edit']);
+Route::post('/updateNews', [NewsController::class, 'update']);
+Route::delete('/deleteNews', [NewsController::class, 'destroy']);
